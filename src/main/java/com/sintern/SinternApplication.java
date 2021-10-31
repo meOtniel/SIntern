@@ -9,5 +9,4 @@ public class SinternApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SinternApplication.class, args);
 	}
-
 }
