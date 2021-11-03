@@ -1,6 +1,8 @@
-package com.sintern.domain;
+package com.sintern.domain.entity;
 
 
+import com.sintern.domain.enums.SpecializationType;
+import com.sintern.domain.enums.UniversityType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.GenericGenerator;
@@ -14,7 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class OpenInternPosition {
+public class EducationDetails {
 
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -22,13 +24,12 @@ public class OpenInternPosition {
     @Column(columnDefinition = "uuid")
     UUID id;
 
-    String name;
-    String department;
-    String description;
-    int availablePositions;
+    UniversityType university;
+    String faculty;
+    SpecializationType specialization;
+    String yearOfStudy;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    Company company;
-
-
+    @OneToOne
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
+    Student student;
 }

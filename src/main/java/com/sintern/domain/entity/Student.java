@@ -1,4 +1,4 @@
-package com.sintern.domain;
+package com.sintern.domain.entity;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;

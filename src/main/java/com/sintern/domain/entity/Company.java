@@ -1,5 +1,6 @@
-package com.sintern.domain;
+package com.sintern.domain.entity;
 
+import com.sintern.domain.enums.DomainType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 

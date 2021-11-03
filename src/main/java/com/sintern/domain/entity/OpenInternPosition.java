@@ -1,4 +1,5 @@
-package com.sintern.domain;
+package com.sintern.domain.entity;
+
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -7,14 +8,13 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.UUID;
 
-@MappedSuperclass
-@Table(name = "sintern_user")
+@Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class User {
+public class OpenInternPosition {
 
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -22,8 +22,13 @@ public class User {
     @Column(columnDefinition = "uuid")
     UUID id;
 
-    @Column(name = "email", unique = true)
-    String email;
+    String name;
+    String department;
+    String description;
+    int availablePositions;
 
-    String password;
+    @ManyToOne(fetch = FetchType.LAZY)
+    Company company;
+
+
 }
