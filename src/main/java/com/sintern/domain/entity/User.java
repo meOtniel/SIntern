@@ -20,10 +20,10 @@ public class User {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(columnDefinition = "uuid")
-    UUID id;
+    protected UUID id;
 
     @Column(name = "email", unique = true)
-    String email;
+    protected String email;
 
-    String password;
+    protected String password;
 }
