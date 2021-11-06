@@ -2,6 +2,7 @@ package com.sintern.api;
 
 import com.sintern.domain.DomainType;
 import com.sintern.domain.OpenInternPosition;
+import com.sintern.domain.OpenInternPositionDTO;
 import com.sintern.repository.OpenInternPositionRepository;
 import com.sintern.service.OpenInternPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/API/OpenInternPosition")
+@RequestMapping("/open-positions")
 public class OpenInternPositionController {
     public OpenInternPositionService openInternPositionService;
 
@@ -21,13 +22,23 @@ public class OpenInternPositionController {
         this.openInternPositionService = openInternPositionService;
     }
 
-    @RequestMapping(value = "/FilterByDomain", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/domain", method = RequestMethod.GET)
     public List<OpenInternPosition> filterByDomain(DomainType domainType){
         return openInternPositionService.findOpenInternPositionByCompany_Domain(domainType);
     }
 
-    @RequestMapping(value = "/FilterByAddress", method = RequestMethod.GET)
+    @RequestMapping(value = "/address", method = RequestMethod.GET)
     public List<OpenInternPosition> filterByAddress(String address){
         return openInternPositionService.findOpenInternPositionByCompany_Address(address);
+    }*/
+
+    @RequestMapping(value = "/domain", method = RequestMethod.GET)
+    public List<OpenInternPositionDTO> filterByDomain(DomainType domainType){
+        return openInternPositionService.findOpenInternPositionDTOByCompany_Domain(domainType);
+    }
+
+    @RequestMapping(value = "/address", method = RequestMethod.GET)
+    public List<OpenInternPositionDTO> filterByAddress(String address){
+        return openInternPositionService.findOpenInternPositionDTOByCompany_Address(address);
     }
 }
