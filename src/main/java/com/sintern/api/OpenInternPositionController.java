@@ -21,17 +21,7 @@ public class OpenInternPositionController {
     public OpenInternPositionController(OpenInternPositionService openInternPositionService) {
         this.openInternPositionService = openInternPositionService;
     }
-
-    /*@RequestMapping(value = "/domain", method = RequestMethod.GET)
-    public List<OpenInternPosition> filterByDomain(DomainType domainType){
-        return openInternPositionService.findOpenInternPositionByCompany_Domain(domainType);
-    }
-
-    @RequestMapping(value = "/address", method = RequestMethod.GET)
-    public List<OpenInternPosition> filterByAddress(String address){
-        return openInternPositionService.findOpenInternPositionByCompany_Address(address);
-    }*/
-
+    
     @RequestMapping(value = "/domain", method = RequestMethod.GET)
     public List<OpenInternPositionDTO> filterByDomain(DomainType domainType){
         return openInternPositionService.findOpenInternPositionDTOByCompany_Domain(domainType);
