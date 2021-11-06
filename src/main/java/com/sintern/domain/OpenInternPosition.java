@@ -1,6 +1,7 @@
 package com.sintern.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.GenericGenerator;
@@ -27,6 +28,7 @@ public class OpenInternPosition {
     String description;
     int availablePositions;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     Company company;
 

@@ -1,5 +1,6 @@
 package com.sintern.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -19,6 +20,7 @@ public class Company extends User {
     DomainType domain;
     String address;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "company")
     List<OpenInternPosition> openPositions;
 }
