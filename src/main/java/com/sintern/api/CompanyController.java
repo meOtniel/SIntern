@@ -19,7 +19,6 @@ public class CompanyController {
     public CompanyController(CompanyService companyService) {
         this.companyService = companyService;
     }
-
     @PostMapping("/register")
     public void processRegister(@RequestBody Company company) {
         companyService.addCompany(company);
