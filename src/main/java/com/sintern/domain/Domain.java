@@ -1,10 +1,12 @@
 package com.sintern.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -15,6 +17,7 @@ import java.util.UUID;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Domain {
 
+    @JsonIgnore
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
@@ -25,6 +28,7 @@ public class Domain {
 
     DomainType domainType;
 
-    @OneToOne(mappedBy = "domain")
-    Company company;
+    @JsonIgnore
+    @OneToMany(mappedBy = "domain")
+    List<Company> companies;
 }
