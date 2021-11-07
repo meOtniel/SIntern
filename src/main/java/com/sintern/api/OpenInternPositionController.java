@@ -1,5 +1,6 @@
 package com.sintern.api;
 
+import com.sintern.domain.Domain;
 import com.sintern.domain.DomainType;
 import com.sintern.domain.OpenInternPosition;
 import com.sintern.domain.OpenInternPositionDTO;

@@ -29,7 +29,7 @@ public class OpenInternPosition {
     int availablePositions;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     Company company;
 
 
