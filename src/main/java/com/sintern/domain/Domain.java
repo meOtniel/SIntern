@@ -6,6 +6,7 @@ import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -28,14 +29,6 @@ public class Domain {
     DomainType domainType;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "domain")
-    Company company;
-
-    @Override
-    public String toString() {
-        return "Domain{" +
-                "description='" + description + '\'' +
-                ", domainType=" + domainType +
-                '}';
-    }
+    @OneToMany(mappedBy = "domain")
+    List<Company> companies;
 }

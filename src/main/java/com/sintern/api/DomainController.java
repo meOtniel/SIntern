@@ -1,26 +1,27 @@
 package com.sintern.api;
 
 import com.sintern.domain.Domain;
-import com.sintern.service.OpenInternPositionService;
+import com.sintern.service.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/domains")
 public class DomainController {
 
-    public OpenInternPositionService openInternPositionService;
+    private final DomainService domainService;
 
     @Autowired
-    public DomainController(OpenInternPositionService openInternPositionService) {
-        this.openInternPositionService = openInternPositionService;
+    public DomainController(DomainService domainService) {
+        this.domainService = domainService;
     }
 
-    @RequestMapping(value = "/domains", method = RequestMethod.GET)
+    @GetMapping
     public List<Domain> getDomains(){
-        return openInternPositionService.getDomains();
+        return domainService.getDomains();
     }
 }
