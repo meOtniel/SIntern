@@ -16,13 +16,9 @@ public class CompanyServiceImpl implements CompanyService {
         this.companyRepository = companyRepository;
     }
 
-
     public void addCompany(Company company){
         String encodedPassword = encryptionService.encodePassword(company.getPassword());
         company.setPassword(encodedPassword);
         companyRepository.save(company);
     }
-
-
-
 }
