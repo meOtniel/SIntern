@@ -6,9 +6,15 @@ INSERT INTO public.education_details (id, faculty, specialization, university, y
 INSERT INTO public.education_details (id, faculty, specialization, university, year_of_study, student_id) VALUES ('a7a4a86a-3edd-11ec-9bbc-0242ac130002', 'Mathematics and Informatics', 1, 1, '2nd year', 'eed75c56-3ed7-11ec-9bbc-0242ac130002');
 INSERT INTO public.education_details (id, faculty, specialization, university, year_of_study, student_id) VALUES ('a7a4a07c-3edd-11ec-9bbc-0242ac130002', 'Faculty of Medicine', 3, 2, '5th year', 'eed75d46-3ed7-11ec-9bbc-0242ac130002');
 
-INSERT INTO public.company (id, email, password, address, domain, name) VALUES ('eed76dd6-3ed7-11ec-9bbc-0242ac130002', 'sintern@company.com', 'sintern', 'Cluj-Napoca', 0, 'SIntern');
-INSERT INTO public.company (id, email, password, address, domain, name) VALUES ('eed76ab6-3ed7-11ec-9bbc-0242ac130002', 'medcare@company.com', 'medcare', 'Cluj-Napoca', 1, 'Med Care');
-INSERT INTO public.company (id, email, password, address, domain, name) VALUES ('4cbcf712-3ede-11ec-9bbc-0242ac130002', 'computersit@company.com', 'computersit', 'Bucharest', 0, 'ComputersIT');
+INSERT INTO public.domain (id, description, domain_type) VALUES ('489df338-3f16-11ec-9bbc-0242ac130002', 'Information Technology', 0);
+INSERT INTO public.domain (id, description, domain_type) VALUES ('489df554-3f16-11ec-9bbc-0242ac130002', 'Medicine & Care', 1);
+INSERT INTO public.domain (id, description, domain_type) VALUES ('489df7f2-3f16-11ec-9bbc-0242ac130002', 'Chemistry Field ', 2);
+INSERT INTO public.domain (id, description, domain_type) VALUES ('489df8d8-3f16-11ec-9bbc-0242ac130002', 'Military & Police Domain', 3);
+INSERT INTO public.domain (id, description, domain_type) VALUES ('489df9a0-3f16-11ec-9bbc-0242ac130002', 'Finance Domain', 4);
+
+INSERT INTO public.company (id, email, password, address, name, domain_id) VALUES ('eed76dd6-3ed7-11ec-9bbc-0242ac130002', 'sintern@company.com', 'sintern', 'Cluj-Napoca', 'SIntern', '489df338-3f16-11ec-9bbc-0242ac130002');
+INSERT INTO public.company (id, email, password, address, name, domain_id) VALUES ('eed76ab6-3ed7-11ec-9bbc-0242ac130002', 'medcare@company.com', 'medcare', 'Cluj-Napoca', 'Med Care', '489df554-3f16-11ec-9bbc-0242ac130002');
+INSERT INTO public.company (id, email, password, address, name, domain_id) VALUES ('4cbcf712-3ede-11ec-9bbc-0242ac130002', 'computersit@company.com', 'computersit', 'Bucharest', 'ComputersIT', '489df338-3f16-11ec-9bbc-0242ac130002');
 
 INSERT INTO public.open_intern_position (id, available_positions, department, description, name, company_id) VALUES ('4cbcf0d2-3ede-11ec-9bbc-0242ac130002', 5, 'Java Backend', 'Java Backend Internship with Spring Framework, Hibernate ORM', 'Java Backend Internship', 'eed76dd6-3ed7-11ec-9bbc-0242ac130002');
 INSERT INTO public.open_intern_position (id, available_positions, department, description, name, company_id) VALUES ('4cbcecea-3ede-11ec-9bbc-0242ac130002', 2, 'Web Development', 'Web Development Internship, Angular Framework', 'Angular Web Dev. Internship', 'eed76dd6-3ed7-11ec-9bbc-0242ac130002');
