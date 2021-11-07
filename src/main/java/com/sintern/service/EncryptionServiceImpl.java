@@ -8,8 +8,6 @@ public class EncryptionServiceImpl implements EncryptionService {
 
     public String encodePassword(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(password);
-
-        return encodedPassword;
+        return passwordEncoder.encode(password);
     }
 }
