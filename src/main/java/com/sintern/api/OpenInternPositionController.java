@@ -33,4 +33,9 @@ public class OpenInternPositionController {
     public List<OpenInternPositionDTO> filterByDomain(@PathVariable DomainType domainType){
         return openInternPositionService.findOpenInternPositionDTOByCompanyDomain(domainType);
     }
+
+    @RequestMapping(value = "/domains", method = RequestMethod.GET)
+    public List<Domain> getDomains(){
+        return openInternPositionService.getDomains();
+    }
 }
