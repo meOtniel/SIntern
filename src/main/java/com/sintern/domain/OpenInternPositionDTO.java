@@ -7,15 +7,15 @@ import javax.persistence.ManyToOne;
 import java.util.UUID;
 
 public class OpenInternPositionDTO {
-    UUID id;
-    String name;
-    String department;
-    String description;
-    int availablePositions;
+    private UUID id;
+    private String name;
+    private String department;
+    private String description;
+    private int availablePositions;
 
-    String companyName;
-    DomainType companyDomain;
-    String companyAddress;
+    private String companyName;
+    private DomainType companyDomain;
+    private String companyAddress;
 
     public OpenInternPositionDTO(UUID id, String name, String department, String description, int availablePositions, String companyName, DomainType companyDomain, String companyAddress) {
         this.id = id;

@@ -19,7 +19,7 @@ public class OpenInternPositionService {
         this.openInternPositionRepository = openInternPositionRepository;
     }
 
-    public List<OpenInternPositionDTO> findOpenInternPositionDTOByCompany_Address(String address){
+    public List<OpenInternPositionDTO> findOpenInternPositionDTOByCompanyAddress(String address){
         List<OpenInternPositionDTO> openInternPositionDTOList = new ArrayList<>();
 
         for (OpenInternPosition openInterPosition: openInternPositionRepository.findOpenInternPositionByCompany_Address(address)) {
@@ -31,7 +31,7 @@ public class OpenInternPositionService {
         return  openInternPositionDTOList;
     }
 
-    public List<OpenInternPositionDTO> findOpenInternPositionDTOByCompany_Domain(DomainType domainType){
+    public List<OpenInternPositionDTO> findOpenInternPositionDTOByCompanyDomain(DomainType domainType){
         List<OpenInternPositionDTO> openInternPositionDTOList = new ArrayList<>();
 
         for (OpenInternPosition openInterPosition: openInternPositionRepository.findOpenInternPositionByCompany_Domain(domainType)) {
