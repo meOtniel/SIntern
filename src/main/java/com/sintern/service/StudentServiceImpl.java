@@ -10,12 +10,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentServiceImpl implements StudentService {
 
-    private StudentRepository studentRepository;
-    private EncryptionService encryptionService = new EncryptionServiceImpl();
+    private final StudentRepository studentRepository;
+    private final EncryptionService encryptionService;
 
     @Autowired
-    public StudentServiceImpl(StudentRepository studentRepository) {
+    public StudentServiceImpl(StudentRepository studentRepository, EncryptionService encryptionService) {
         this.studentRepository = studentRepository;
+        this.encryptionService = encryptionService;
     }
 
     public void addStudent(Student student) {
