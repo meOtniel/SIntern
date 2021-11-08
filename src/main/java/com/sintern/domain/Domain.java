@@ -30,13 +30,5 @@ public class Domain {
 
     @JsonIgnore
     @OneToMany(mappedBy = "domain")
-    List<Company> company;
-
-    @Override
-    public String toString() {
-        return "Domain{" +
-                "description='" + description + '\'' +
-                ", domainType=" + domainType +
-                '}';
-    }
+    List<Company> companies;
 }

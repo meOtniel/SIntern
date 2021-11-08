@@ -1,5 +1,5 @@
 package com.sintern.domain;
 
 public enum UniversityType {
-    UBB, UTCN
+    UBB, UTCN, UMF, USAMV
 }

@@ -23,7 +23,7 @@ public class EducationDetails {
     UUID id;
 
     UniversityType university;
-    String faculty;
+    FacultyType faculty;
     SpecializationType specialization;
     String yearOfStudy;
 
