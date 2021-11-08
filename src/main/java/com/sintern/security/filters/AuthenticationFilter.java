@@ -60,8 +60,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest req, HttpServletResponse res, AuthenticationException failed) throws IOException {
-        ApiError error = new ApiError(ZonedDateTime.now(), HttpStatus.UNAUTHORIZED, failed.getMessage());
-        String json = (new Gson()).toJson(error);
+        String json = "{\"errorMessage\":\""+failed.getMessage()+"\"}";
         res.getOutputStream().write(json.getBytes());
         res.getOutputStream().flush();
     }
