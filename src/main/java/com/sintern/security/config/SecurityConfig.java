@@ -65,8 +65,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new AuthenticationFilter(authenticationManager(), jwtUtil))
                 .addFilterAfter(new AuthorizationFilter(jwtUtil, userServiceDetails), AuthenticationFilter.class)
                 .formLogin()
-                .loginPage("/login.html")
-                .defaultSuccessUrl("/mainPage")//TODO:change redirect
+                .loginPage("/login")
+//                .defaultSuccessUrl("/mainPage")//TODO:change redirect
                 .permitAll()
                 .and()
                 .logout()
