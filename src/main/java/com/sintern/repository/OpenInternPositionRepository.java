@@ -10,6 +10,6 @@ import java.util.UUID;
 
 @Repository
 public interface OpenInternPositionRepository extends JpaRepository<OpenInternPosition, UUID> {
-    public List<OpenInternPosition> findOpenInternPositionByCompany_Address(String companyAddress);
-    public List<OpenInternPosition> findOpenInternPositionByCompany_Domain(DomainType companyDomain);
+    List<OpenInternPosition> findOpenInternPositionByCompany_Address(String companyAddress);
+    List<OpenInternPosition> findOpenInternPositionsByCompanyDomainDomainType(DomainType domainType);
 }

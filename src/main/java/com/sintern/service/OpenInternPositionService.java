@@ -36,7 +36,7 @@ public class OpenInternPositionService {
     public List<OpenInternPositionDTO> findOpenInternPositionDTOByCompanyDomain(DomainType domainType){
         List<OpenInternPositionDTO> openInternPositionDTOList = new ArrayList<>();
 
-        for (OpenInternPosition openInterPosition: openInternPositionRepository.findOpenInternPositionByCompany_Domain(domainType)) {
+        for (OpenInternPosition openInterPosition: openInternPositionRepository.findOpenInternPositionsByCompanyDomainDomainType(domainType)) {
             OpenInternPositionDTO openInternPositionDTO = new OpenInternPositionDTO(openInterPosition.getId(), openInterPosition.getName(),
                     openInterPosition.getDepartment(), openInterPosition.getDescription(), openInterPosition.getAvailablePositions(),
                     openInterPosition.getCompany().getName(), openInterPosition.getCompany().getDomain().getDomainType(), openInterPosition.getCompany().getAddress());

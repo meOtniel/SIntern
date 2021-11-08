@@ -26,8 +26,8 @@ public class OpenInternPositionController {
     }
 
     @RequestMapping(value = "/domain/{domainType}", method = RequestMethod.GET)
-    public List<OpenInternPositionDTO> filterByDomain(@PathVariable DomainType domainType){
-        return openInternPositionService.findOpenInternPositionDTOByCompanyDomain(domainType);
+    public List<OpenInternPositionDTO> filterByDomain(@PathVariable String domainType){
+        return openInternPositionService.findOpenInternPositionDTOByCompanyDomain(DomainType.valueOf(domainType));
     }
 
     @RequestMapping(value = "/domains", method = RequestMethod.GET)
