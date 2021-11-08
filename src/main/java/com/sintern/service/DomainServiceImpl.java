@@ -1,6 +1,7 @@
 package com.sintern.service;
 
 import com.sintern.domain.Domain;
+import com.sintern.domain.DomainType;
 import com.sintern.repository.DomainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,10 @@ public class DomainServiceImpl implements DomainService {
     @Override
     public List<Domain> getDomains() {
         return domainRepository.findAll();
+    }
+
+    @Override
+    public List<Domain> getDomainsByDomainType(DomainType domainType) {
+        return domainRepository.findByDomainType(domainType);
     }
 }
