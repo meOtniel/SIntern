@@ -1,5 +1,6 @@
 package com.sintern.api;
 
+import com.sintern.domain.Domain;
 import com.sintern.domain.DomainType;
 import com.sintern.domain.OpenInternPositionDTO;
 import com.sintern.service.OpenInternPositionService;
@@ -27,5 +28,10 @@ public class OpenInternPositionController {
     @RequestMapping(value = "/domain/{domainType}", method = RequestMethod.GET)
     public List<OpenInternPositionDTO> filterByDomain(@PathVariable DomainType domainType){
         return openInternPositionService.findOpenInternPositionDTOByCompanyDomain(domainType);
+    }
+
+    @RequestMapping(value = "/domains", method = RequestMethod.GET)
+    public List<Domain> getDomains(){
+        return openInternPositionService.getDomains();
     }
 }

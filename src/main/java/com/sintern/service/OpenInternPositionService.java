@@ -44,4 +44,15 @@ public class OpenInternPositionService {
         }
         return  openInternPositionDTOList;
     }
+
+    public List<Domain> getDomains() {
+        List<OpenInternPosition> openInternPositions = openInternPositionRepository.findAll();
+        List<Domain> domains = new ArrayList<>();
+
+        for (OpenInternPosition openInternPosition : openInternPositions){
+            domains.add(openInternPosition.getCompany().getDomain());
+        }
+
+        return domains.stream().distinct().collect(Collectors.toList());
+    }
 }
