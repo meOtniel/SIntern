@@ -27,7 +27,7 @@ public class OpenInternPositionService {
         for (OpenInternPosition openInterPosition: openInternPositionRepository.findOpenInternPositionByCompany_Address(address)) {
             OpenInternPositionDTO openInternPositionDTO = new OpenInternPositionDTO(openInterPosition.getId(), openInterPosition.getName(),
                     openInterPosition.getDepartment(), openInterPosition.getDescription(), openInterPosition.getAvailablePositions(),
-                    openInterPosition.getCompany().getName(), openInterPosition.getCompany().getDomain(), openInterPosition.getCompany().getAddress());
+                    openInterPosition.getCompany().getName(), openInterPosition.getCompany().getDomain().getDomainType(), openInterPosition.getCompany().getAddress());
             openInternPositionDTOList.add(openInternPositionDTO);
         }
         return  openInternPositionDTOList;
@@ -39,7 +39,7 @@ public class OpenInternPositionService {
         for (OpenInternPosition openInterPosition: openInternPositionRepository.findOpenInternPositionByCompany_Domain(domainType)) {
             OpenInternPositionDTO openInternPositionDTO = new OpenInternPositionDTO(openInterPosition.getId(), openInterPosition.getName(),
                     openInterPosition.getDepartment(), openInterPosition.getDescription(), openInterPosition.getAvailablePositions(),
-                    openInterPosition.getCompany().getName(), openInterPosition.getCompany().getDomain(), openInterPosition.getCompany().getAddress());
+                    openInterPosition.getCompany().getName(), openInterPosition.getCompany().getDomain().getDomainType(), openInterPosition.getCompany().getAddress());
             openInternPositionDTOList.add(openInternPositionDTO);
         }
         return  openInternPositionDTOList;
