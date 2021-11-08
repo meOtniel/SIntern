@@ -18,5 +18,4 @@ public class SInternExceptionHandler {
     public ApiError handleExistentEmailException(ExistentEmailException exception){
         return new ApiError(ZonedDateTime.now(), HttpStatus.UNAUTHORIZED, List.of("Email already exists"));
     }
-
 }
