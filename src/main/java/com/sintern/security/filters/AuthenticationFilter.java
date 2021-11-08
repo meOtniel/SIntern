@@ -52,6 +52,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain, Authentication auth) throws IOException {
         String token = jwtUtil.generateToken((UserDetails) auth.getPrincipal());
         res.addCookie(new Cookie("token", token));
+        res.setStatus(200);
         res.setContentType("application/json");
         String json = "{\"token\":\""+token+"\"}";
         res.getOutputStream().write(json.getBytes());
@@ -61,6 +62,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest req, HttpServletResponse res, AuthenticationException failed) throws IOException {
         String json = "{\"errorMessage\":\""+failed.getMessage()+"\"}";
+        res.setStatus(401);
         res.getOutputStream().write(json.getBytes());
         res.getOutputStream().flush();
     }
