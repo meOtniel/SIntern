@@ -1,5 +1,6 @@
 package com.sintern.security.filters;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.sintern.exception.ApiError;
 import com.sintern.exception.InvalidException;
@@ -14,6 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -42,10 +44,15 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     @SneakyThrows
     public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res) throws AuthenticationException {
-        final String username = req.getParameter("email");
-        final String password = req.getParameter("password");
-        return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                username, password, new ArrayList<>()));
+        UserCredentialsDto creds = new ObjectMapper()
+                .readValue(req.getInputStream(), UserCredentialsDto.class);
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        if(passwordEncoder.matches(creds.getPassword(), "$2a$12$6BfCTu4lq9urciOSyGxRPeq0guve6mGjpBjLQZrWA86Le/fO/2imO"))
+            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                    creds.getEmail(), creds.getPassword(), new ArrayList<>()));
+        else
+            return null;
     }
 
     @Override
