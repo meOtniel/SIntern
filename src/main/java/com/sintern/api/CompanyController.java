@@ -1,10 +1,12 @@
 package com.sintern.api;
 
-import com.sintern.domain.Company;
+import com.sintern.api.request.CompanyRegisterRequest;
 import com.sintern.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import static com.sintern.api.request.transformer.CompanyRegisterTransformer.transform;
 
 @CrossOrigin
 @RestController
@@ -20,7 +22,7 @@ public class CompanyController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.OK)
-    public void processRegister(@RequestBody Company company) {
-        companyService.addCompany(company);
+    public void processRegister(@RequestBody CompanyRegisterRequest companyRegisterRequest) {
+        companyService.addCompany(transform(companyRegisterRequest));
     }
 }
