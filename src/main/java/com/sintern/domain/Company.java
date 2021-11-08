@@ -1,5 +1,6 @@
 package com.sintern.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -21,6 +22,7 @@ public class Company extends User {
     String name;
     String address;
 
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "domain_id", referencedColumnName = "id")
     Domain domain;
