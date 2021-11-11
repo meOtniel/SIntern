@@ -1,9 +1,9 @@
 package com.sintern.api.request.transformer;
 
 import com.sintern.api.request.CompanyRegisterRequest;
-import com.sintern.domain.Company;
-import com.sintern.domain.Domain;
-import com.sintern.domain.DomainType;
+import com.sintern.domain.entity.Company;
+import com.sintern.domain.entity.Domain;
+import com.sintern.domain.enums.DomainType;
 import com.sintern.exception.NonExistentDomainException;
 
 public class CompanyRegisterTransformer {

@@ -1,6 +1,6 @@
 package com.sintern.api;
 
-import com.sintern.domain.Student;
+import com.sintern.domain.entity.Student;
 import com.sintern.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/students")
 public class StudentController {
-    private StudentService studentService;
+    private final StudentService studentService;
 
     @Autowired
     public StudentController(StudentService studentService) {
