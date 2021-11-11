@@ -24,7 +24,6 @@ public class DomainController {
 
     @GetMapping
     public List<Domain> getDomains(){
-        System.out.println(domainService.getDomains());
         return domainService.getDomains();
     }
 }
