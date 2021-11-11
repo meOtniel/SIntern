@@ -1,7 +1,7 @@
 package com.sintern.repository;
 
-import com.sintern.domain.DomainType;
-import com.sintern.domain.OpenInternPosition;
+import com.sintern.domain.enums.DomainType;
+import com.sintern.domain.entity.OpenInternPosition;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

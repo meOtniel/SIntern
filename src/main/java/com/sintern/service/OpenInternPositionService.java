@@ -1,9 +1,9 @@
 package com.sintern.service;
 
-import com.sintern.domain.Domain;
-import com.sintern.domain.DomainType;
-import com.sintern.domain.OpenInternPosition;
-import com.sintern.domain.OpenInternPositionDTO;
+import com.sintern.domain.entity.Domain;
+import com.sintern.domain.enums.DomainType;
+import com.sintern.domain.entity.OpenInternPosition;
+import com.sintern.domain.dto.OpenInternPositionDTO;
 import com.sintern.repository.OpenInternPositionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class OpenInternPositionService {
-    private OpenInternPositionRepository openInternPositionRepository;
+    private final OpenInternPositionRepository openInternPositionRepository;
 
     @Autowired
     public OpenInternPositionService(OpenInternPositionRepository openInternPositionRepository) {

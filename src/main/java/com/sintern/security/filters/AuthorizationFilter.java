@@ -3,7 +3,6 @@ package com.sintern.security.filters;
 import com.sintern.security.jwt.JwtUtil;
 import com.sintern.security.service.SUserDetailsService;
 import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

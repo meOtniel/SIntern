@@ -1,38 +1,41 @@
-package com.sintern.domain;
+package com.sintern.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import java.time.LocalDate;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Company extends User implements UserDetails {
+public class Student extends User implements UserDetails {
 
-    String name;
-    String address;
+    String firstName;
+    String lastName;
+    LocalDate dateOfBirth;
+    String phoneNumber;
 
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn
-    Domain domain;
+    @OneToOne(mappedBy = "student")
+    EducationDetails educationDetails;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "company")
-    List<OpenInternPosition> openPositions;
+    @Override
+    public String toString() {
+        return "Student{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", educationDetails=" + educationDetails +
+                '}';
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

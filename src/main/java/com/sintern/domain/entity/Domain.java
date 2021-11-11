@@ -1,33 +1,35 @@
-package com.sintern.domain;
+package com.sintern.domain.entity;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sintern.domain.enums.DomainType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class EducationDetails {
+public class Domain {
 
+    @JsonIgnore
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(columnDefinition = "uuid")
     UUID id;
 
-    UniversityType university;
-    FacultyType faculty;
-    SpecializationType specialization;
-    String yearOfStudy;
+    String description;
 
-    @OneToOne
-    @JoinColumn(name = "student_id", referencedColumnName = "id")
-    Student student;
+    DomainType domainType;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "domain")
+    List<Company> companies;
 }
