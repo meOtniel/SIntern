@@ -26,9 +26,9 @@ public class SInternExceptionHandler {
         return new ApiError(ZonedDateTime.now(), HttpStatus.NOT_FOUND, exception.getMessage());
     }
 
-    @ExceptionHandler(ConstraintViolationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(value = {ConstraintViolationException.class})
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ApiError handleConstraintViolationException(ConstraintViolationException exception) {
-        return new ApiError(ZonedDateTime.now(), HttpStatus.UNAUTHORIZED, "Not valid due to validation error: " + exception.getMessage());
+        return new ApiError(ZonedDateTime.now(), HttpStatus.BAD_REQUEST, exception.getMessage());
     }
 }

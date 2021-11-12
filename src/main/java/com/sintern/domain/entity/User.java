@@ -25,7 +25,7 @@ public class User {
 
     @NotNull(message = "Email is required")
     @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email format")
+    @Email(regexp = "^[a-z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-z]{2,4}$", message = "Invalid email format")
     @Column(name = "email", unique = true)
     @Size(min = 7, max = 74, message = "Email should have between 7 and 74 characters")
     String email;
