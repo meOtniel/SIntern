@@ -5,6 +5,7 @@ import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.UUID;
 
 @MappedSuperclass
@@ -22,8 +23,14 @@ public class User {
     @Column(columnDefinition = "uuid")
     UUID id;
 
+    @NotNull(message = "Email is required")
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email format")
     @Column(name = "email", unique = true)
+    @Size(min = 7, max = 74, message = "Email should have between 7 and 74 characters")
     String email;
 
+    @NotNull(message = "Password is required")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")
     String password;
 }
