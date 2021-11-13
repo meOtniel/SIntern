@@ -1,7 +1,8 @@
-package com.sintern.domain;
+package com.sintern.domain.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.sintern.domain.entity.Company;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.GenericGenerator;

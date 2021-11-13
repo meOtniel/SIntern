@@ -1,11 +1,14 @@
-package com.sintern.domain;
+package com.sintern.domain.entity;
 
+
+import com.sintern.domain.enums.FacultyType;
+import com.sintern.domain.enums.SpecializationType;
+import com.sintern.domain.enums.UniversityType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -14,7 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Application {
+public class EducationDetails {
 
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -22,15 +25,12 @@ public class Application {
     @Column(columnDefinition = "uuid")
     UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id")
+    UniversityType university;
+    FacultyType faculty;
+    SpecializationType specialization;
+    String yearOfStudy;
+
+    @OneToOne
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
     Student student;
-
-    @ManyToOne
-    @JoinColumn(name = "open_position_id")
-    OpenInternPosition openInternPosition;
-
-    String CV; // The path to the CV, will have to check this one
-    String description;
-    LocalDateTime dateOfSubmission;
 }

@@ -1,9 +1,7 @@
-package com.sintern.domain;
+package com.sintern.domain.dto;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.sintern.domain.enums.DomainType;
 
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
 import java.util.UUID;
 
 public class OpenInternPositionDTO {

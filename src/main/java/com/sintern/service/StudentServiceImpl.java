@@ -1,6 +1,6 @@
 package com.sintern.service;
 
-import com.sintern.domain.Student;
+import com.sintern.domain.entity.Student;
 import com.sintern.exception.ExistentEmailException;
 import com.sintern.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;

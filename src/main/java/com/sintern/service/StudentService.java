@@ -1,7 +1,7 @@
 package com.sintern.service;
 
-import com.sintern.domain.Student;
+import com.sintern.domain.entity.Student;
 
 public interface StudentService {
-    public void addStudent(Student student);
+    void addStudent(Student student);
 }

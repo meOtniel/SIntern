@@ -1,6 +1,6 @@
 package com.sintern.api;
 
-import com.sintern.domain.Domain;
+import com.sintern.domain.entity.Domain;
 import com.sintern.service.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

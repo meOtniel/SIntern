@@ -1,8 +1,8 @@
 package com.sintern.api;
 
-import com.sintern.domain.Domain;
-import com.sintern.domain.DomainType;
-import com.sintern.domain.OpenInternPositionDTO;
+import com.sintern.domain.entity.Domain;
+import com.sintern.domain.enums.DomainType;
+import com.sintern.domain.dto.OpenInternPositionDTO;
 import com.sintern.service.OpenInternPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/open-positions")
 public class OpenInternPositionController {
-    private OpenInternPositionService openInternPositionService;
+    private final OpenInternPositionService openInternPositionService;
 
     @Autowired
     public OpenInternPositionController(OpenInternPositionService openInternPositionService) {
