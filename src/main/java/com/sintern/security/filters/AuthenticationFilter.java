@@ -59,8 +59,6 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
             }
         }
 
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
         return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 creds.getEmail(), creds.getPassword(), new ArrayList<>()));
     }
