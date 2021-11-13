@@ -7,6 +7,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Collection;
 
@@ -17,10 +21,21 @@ import java.util.Collection;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Student extends User implements UserDetails {
-
+    @NotNull(message = "First Name is required")
+    @NotBlank(message = "First Name is required")
+    @Size(min = 2, max = 100, message = "First Name should have between 2 and 100 characters")
     String firstName;
+
+    @NotNull(message = "Last Name is required")
+    @NotBlank(message = "Last Name is required")
+    @Size(min = 2, max = 100, message = "Last Name should have between 2 and 100 characters")
     String lastName;
+
+    @NotNull(message = "Date of birth is required")
     LocalDate dateOfBirth;
+
+    @NotNull(message = "Phone number is required")
+    @Pattern(regexp = "^(\\d{3}[- ]?){2}\\d{4}$", message = "Invalid phone number")
     String phoneNumber;
 
     @OneToOne(mappedBy = "student")

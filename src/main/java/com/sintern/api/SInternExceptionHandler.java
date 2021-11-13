@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.ConstraintViolationException;
 import java.time.ZonedDateTime;
 
 @RestControllerAdvice
@@ -23,5 +24,11 @@ public class SInternExceptionHandler {
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     public ApiError handleNonExistentDomainException(NonExistentDomainException exception) {
         return new ApiError(ZonedDateTime.now(), HttpStatus.NOT_FOUND, exception.getMessage());
+    }
+
+    @ExceptionHandler(value = {ConstraintViolationException.class})
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ApiError handleConstraintViolationException(ConstraintViolationException exception) {
+        return new ApiError(ZonedDateTime.now(), HttpStatus.BAD_REQUEST, exception.getMessage());
     }
 }

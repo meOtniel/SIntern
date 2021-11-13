@@ -3,8 +3,8 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/sintern
-    username: postgres
-    password: P@trici@1
+    username:
+    password:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:

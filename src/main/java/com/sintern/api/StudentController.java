@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/students")
@@ -19,7 +21,7 @@ public class StudentController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.OK)
-    public void studentRegister(@RequestBody Student student) {
+    public void studentRegister(@Valid @RequestBody Student student) {
         studentService.addStudent(student);
     }
 }
