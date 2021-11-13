@@ -1,7 +1,7 @@
 package com.sintern.service;
 
-import com.sintern.domain.Company;
-import com.sintern.domain.Domain;
+import com.sintern.domain.entity.Company;
+import com.sintern.domain.entity.Domain;
 import com.sintern.exception.ExistentEmailException;
 import com.sintern.exception.NonExistentDomainException;
 import com.sintern.repository.CompanyRepository;

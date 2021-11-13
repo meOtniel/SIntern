@@ -1,7 +1,7 @@
 package com.sintern.repository;
 
-import com.sintern.domain.EducationDetails;
-import com.sintern.domain.UniversityType;
+import com.sintern.domain.entity.EducationDetails;
+import com.sintern.domain.enums.UniversityType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

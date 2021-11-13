@@ -1,4 +1,4 @@
-package com.sintern.domain;
+package com.sintern.domain.entity;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -7,14 +7,12 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.UUID;
 
-@MappedSuperclass
-@Table(name = "sintern_user")
+@Entity
+@Table(name = "file")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PROTECTED)
-public class User {
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class FileEntity {
 
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -22,8 +20,17 @@ public class User {
     @Column(columnDefinition = "uuid")
     UUID id;
 
-    @Column(name = "email", unique = true)
-    String email;
+    String name;
 
-    String password;
+    String contentType;
+
+    Long size;
+
+    @Lob
+    byte[] data;
+
+    @OneToOne
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
+    Student student;
+
 }

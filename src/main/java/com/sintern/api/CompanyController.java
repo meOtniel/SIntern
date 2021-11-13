@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 import static com.sintern.api.request.transformer.CompanyRegisterTransformer.transform;
 
 @CrossOrigin
@@ -22,7 +24,7 @@ public class CompanyController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.OK)
-    public void processRegister(@RequestBody CompanyRegisterRequest companyRegisterRequest) {
+    public void processRegister(@Valid @RequestBody CompanyRegisterRequest companyRegisterRequest) {
         companyService.addCompany(transform(companyRegisterRequest));
     }
 }

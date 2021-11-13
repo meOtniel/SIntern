@@ -1,6 +1,5 @@
 package com.sintern.security.service;
 
-import com.sintern.exception.InvalidException;
 import com.sintern.repository.CompanyRepository;
 import com.sintern.repository.StudentRepository;
 import lombok.AccessLevel;
@@ -9,7 +8,6 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service

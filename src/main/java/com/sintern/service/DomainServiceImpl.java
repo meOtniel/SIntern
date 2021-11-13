@@ -1,7 +1,7 @@
 package com.sintern.service;
 
-import com.sintern.domain.Domain;
-import com.sintern.domain.DomainType;
+import com.sintern.domain.entity.Domain;
+import com.sintern.domain.enums.DomainType;
 import com.sintern.repository.DomainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

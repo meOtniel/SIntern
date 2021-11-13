@@ -1,15 +1,10 @@
 package com.sintern.security.filters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.sintern.exception.ApiError;
-import com.sintern.exception.InvalidException;
 import com.sintern.security.jwt.JwtUtil;
-import com.sintern.security.service.SUserDetailsService;
 import lombok.AccessLevel;
 import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,9 +18,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -58,8 +51,6 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                 ioException.printStackTrace();
             }
         }
-
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 creds.getEmail(), creds.getPassword(), new ArrayList<>()));
