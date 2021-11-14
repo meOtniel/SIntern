@@ -45,4 +45,5 @@ public class SInternExceptionHandler {
     public ApiError handleMaxSizeException(MaxUploadSizeExceededException exc) {
         return new ApiError(ZonedDateTime.now(), HttpStatus.BAD_REQUEST, "Unable to upload. File is too large!");
     }
+
 }
