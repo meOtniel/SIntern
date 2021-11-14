@@ -40,6 +40,9 @@ public class Student extends User implements UserDetails {
 
     @OneToOne(mappedBy = "student")
     EducationDetails educationDetails;
+  
+    @OneToOne(mappedBy = "student")
+    FileEntity cv;
 
     @Override
     public String toString() {
