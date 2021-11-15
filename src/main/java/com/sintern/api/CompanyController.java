@@ -36,7 +36,7 @@ public class CompanyController {
 
     @PostMapping("/upload-logo")
     @ResponseStatus(HttpStatus.OK)
-    public void uploadCv(@RequestParam("id") UUID companyId, @RequestParam("image") MultipartFile image) {
+    public void uploadLogo(@RequestParam("id") UUID companyId, @RequestParam("image") MultipartFile image) {
         logoService.save(image, companyId);
     }
 }

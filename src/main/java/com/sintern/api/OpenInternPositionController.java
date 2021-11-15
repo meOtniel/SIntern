@@ -7,6 +7,7 @@ import com.sintern.domain.entity.Domain;
 import com.sintern.domain.entity.OpenInternPosition;
 import com.sintern.domain.enums.DomainType;
 import com.sintern.service.LogoService;
+import com.sintern.service.OpenInternPositionService;
 import com.sintern.service.OpenInternPositionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -22,11 +23,11 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/open-positions")
 public class OpenInternPositionController {
-    private final OpenInternPositionServiceImpl openInternPositionService;
+    private final OpenInternPositionService openInternPositionService;
     private final LogoService logoService;
 
     @Autowired
-    public OpenInternPositionController(OpenInternPositionServiceImpl openInternPositionService, LogoService logoService) {
+    public OpenInternPositionController(OpenInternPositionService openInternPositionService, LogoService logoService) {
         this.openInternPositionService = openInternPositionService;
         this.logoService = logoService;
     }
@@ -46,16 +47,14 @@ public class OpenInternPositionController {
         return openInternPositionService.getDomains();
     }
 
-    @GetMapping("{openPositionId}/company-logo/")
+    @GetMapping("/{openPositionId}/company-logo")
     public ResponseEntity<byte[]> getLogo(@PathVariable UUID openPositionId) {
-
-        Optional<CompanyLogo> companyLogoOptional = logoService.getLogoByCompanyId(openInternPositionService.getOpenInternPositionById(openPositionId).getCompany().getId());
-
+        Company company =  openInternPositionService.getOpenInternPositionById(openPositionId).getCompany();
+        Optional<CompanyLogo> companyLogoOptional = logoService.getLogoByCompanyId(company.getId());
         if (!companyLogoOptional.isPresent()) {
             return ResponseEntity.notFound()
                     .build();
         }
-
         CompanyLogo companyLogo = companyLogoOptional.get();
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "image; filename=\"" + companyLogo.getName() + "\"")
