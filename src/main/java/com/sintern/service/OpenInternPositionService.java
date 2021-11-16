@@ -1,58 +1,19 @@
 package com.sintern.service;
 
-import com.sintern.domain.entity.Domain;
-import com.sintern.domain.enums.DomainType;
-import com.sintern.domain.entity.OpenInternPosition;
 import com.sintern.domain.dto.OpenInternPositionDTO;
-import com.sintern.repository.OpenInternPositionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.sintern.domain.entity.Domain;
+import com.sintern.domain.entity.OpenInternPosition;
+import com.sintern.domain.enums.DomainType;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.UUID;
 
-@Service
-public class OpenInternPositionService {
-    private final OpenInternPositionRepository openInternPositionRepository;
+public interface OpenInternPositionService {
+    OpenInternPosition getOpenInternPositionById(UUID openInetrnPositionId);
 
-    @Autowired
-    public OpenInternPositionService(OpenInternPositionRepository openInternPositionRepository) {
-        this.openInternPositionRepository = openInternPositionRepository;
-    }
+    List<OpenInternPositionDTO> findOpenInternPositionDTOByCompanyAddress(String address);
 
-    public List<OpenInternPositionDTO> findOpenInternPositionDTOByCompanyAddress(String address){
-        List<OpenInternPositionDTO> openInternPositionDTOList = new ArrayList<>();
+    List<OpenInternPositionDTO> findOpenInternPositionDTOByCompanyDomain(DomainType domainType);
 
-        for (OpenInternPosition openInterPosition: openInternPositionRepository.findOpenInternPositionByCompany_Address(address)) {
-            OpenInternPositionDTO openInternPositionDTO = new OpenInternPositionDTO(openInterPosition.getId(), openInterPosition.getName(),
-                    openInterPosition.getDepartment(), openInterPosition.getDescription(), openInterPosition.getAvailablePositions(),
-                    openInterPosition.getCompany().getName(), openInterPosition.getCompany().getDomain().getDomainType(), openInterPosition.getCompany().getAddress());
-            openInternPositionDTOList.add(openInternPositionDTO);
-        }
-        return  openInternPositionDTOList;
-    }
-
-    public List<OpenInternPositionDTO> findOpenInternPositionDTOByCompanyDomain(DomainType domainType){
-        List<OpenInternPositionDTO> openInternPositionDTOList = new ArrayList<>();
-
-        for (OpenInternPosition openInterPosition: openInternPositionRepository.findOpenInternPositionsByCompanyDomainDomainType(domainType)) {
-            OpenInternPositionDTO openInternPositionDTO = new OpenInternPositionDTO(openInterPosition.getId(), openInterPosition.getName(),
-                    openInterPosition.getDepartment(), openInterPosition.getDescription(), openInterPosition.getAvailablePositions(),
-                    openInterPosition.getCompany().getName(), openInterPosition.getCompany().getDomain().getDomainType(), openInterPosition.getCompany().getAddress());
-            openInternPositionDTOList.add(openInternPositionDTO);
-        }
-        return  openInternPositionDTOList;
-    }
-
-    public List<Domain> getDomains() {
-        List<OpenInternPosition> openInternPositions = openInternPositionRepository.findAll();
-        List<Domain> domains = new ArrayList<>();
-
-        for (OpenInternPosition openInternPosition : openInternPositions){
-            domains.add(openInternPosition.getCompany().getDomain());
-        }
-
-        return domains.stream().distinct().collect(Collectors.toList());
-    }
+    List<Domain> getDomains();
 }
