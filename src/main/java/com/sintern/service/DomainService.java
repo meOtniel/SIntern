@@ -1,5 +1,6 @@
 package com.sintern.service;
 
+import com.sintern.domain.dto.DomainDTO;
 import com.sintern.domain.entity.Domain;
 import com.sintern.domain.enums.DomainType;
 
@@ -10,4 +11,6 @@ public interface DomainService {
     List<Domain> getDomains();
 
     List<Domain> getDomainsByDomainType(DomainType domainType);
+
+    List<DomainDTO> getDomainsDTO();
 }
