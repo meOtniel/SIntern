@@ -1,38 +1,36 @@
 package com.sintern.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sintern.domain.enums.DomainType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
+@Table(name = "file")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Domain {
+public class FileEntity {
 
-    @JsonIgnore
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(columnDefinition = "uuid")
     UUID id;
 
-    String description;
+    String name;
 
-    DomainType domainType;
+    String contentType;
 
-    @OneToOne(mappedBy = "domain")
-    DomainImage domainImage;
+    Long size;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "domain")
-    List<Company> companies;
+    @Lob
+    byte[] data;
+
+    @OneToOne
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
+    Student student;
+
 }

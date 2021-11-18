@@ -1,38 +1,40 @@
 package com.sintern.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sintern.domain.enums.DomainType;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
+@Table(name = "logo_of_company")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Domain {
+public class CompanyLogo {
 
-    @JsonIgnore
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(columnDefinition = "uuid")
     UUID id;
 
-    String description;
+    String name;
 
-    DomainType domainType;
+    String contentType;
 
-    @OneToOne(mappedBy = "domain")
-    DomainImage domainImage;
+    Long size;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "domain")
-    List<Company> companies;
+    @Lob
+    @Type(type = "org.hibernate.type.ImageType")
+    byte[] data;
+
+    @OneToOne
+    @JoinColumn(name = "company_id", referencedColumnName = "id")
+    Company company;
+
 }

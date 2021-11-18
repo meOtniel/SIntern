@@ -7,10 +7,10 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.List;
 
@@ -21,8 +21,14 @@ import java.util.List;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Company extends User implements UserDetails {
-
+    @NotNull(message = "Name is required")
+    @NotBlank(message = "Name is required")
+    @Size(min = 2, max = 100, message = "Name should have between 2 and 100 characters")
     String name;
+
+    @NotNull(message = "Address is required")
+    @NotBlank(message = "Address is required")
+    @Size(min = 2, max = 100, message = "Address should have between 2 and 100 characters")
     String address;
 
     @JsonBackReference
@@ -33,6 +39,9 @@ public class Company extends User implements UserDetails {
     @JsonManagedReference
     @OneToMany(mappedBy = "company")
     List<OpenInternPosition> openPositions;
+
+    @OneToOne(mappedBy = "company")
+    CompanyLogo companyLogo;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

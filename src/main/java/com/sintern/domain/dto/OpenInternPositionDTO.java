@@ -14,6 +14,7 @@ public class OpenInternPositionDTO {
     private String companyName;
     private DomainType companyDomain;
     private String companyAddress;
+    private String companyLogo;
 
     public OpenInternPositionDTO(UUID id, String name, String department, String description, int availablePositions, String companyName, DomainType companyDomain, String companyAddress) {
         this.id = id;
@@ -90,6 +91,14 @@ public class OpenInternPositionDTO {
         this.companyAddress = companyAddress;
     }
 
+    public String getCompanyLogo() {
+        return companyLogo;
+    }
+
+    public void setCompanyLogo(String companyLogo) {
+        this.companyLogo = companyLogo;
+    }
+
     @Override
     public String toString() {
         return "OpenInternPositionDTO{" +
@@ -103,4 +112,5 @@ public class OpenInternPositionDTO {
                 ", companyAddress='" + companyAddress + '\'' +
                 '}';
     }
+
 }
