@@ -31,6 +31,6 @@ public class User {
     String email;
 
     @NotNull(message = "Password is required")
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@$!%*#?&])(?=\\S+$).{8,}$")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@$!%*#?&])(?=\\S+$).{8,}$", message = "Password should contain minimum eight characters, at least one letter, one number and one special character.")
     String password;
 }
