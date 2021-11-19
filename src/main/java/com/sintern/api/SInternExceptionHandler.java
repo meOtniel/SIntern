@@ -1,9 +1,6 @@
 package com.sintern.api;
 
-import com.sintern.exception.ApiError;
-import com.sintern.exception.ExistentEmailException;
-import com.sintern.exception.NonExistentDomainException;
-import com.sintern.exception.SaveCvFailedException;
+import com.sintern.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -46,4 +43,15 @@ public class SInternExceptionHandler {
         return new ApiError(ZonedDateTime.now(), HttpStatus.BAD_REQUEST, "Unable to upload. File is too large!");
     }
 
+    @ExceptionHandler(EntityNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public ApiError handleEntityNotFoundException(EntityNotFoundException exception) {
+        return new ApiError(ZonedDateTime.now(), HttpStatus.NOT_FOUND, exception.getMessage());
+    }
+
+    @ExceptionHandler(CVNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public ApiError handleCVNotFoundException(CVNotFoundException exception){
+        return new ApiError(ZonedDateTime.now(), HttpStatus.NOT_FOUND, exception.getMessage());
+    }
 }
