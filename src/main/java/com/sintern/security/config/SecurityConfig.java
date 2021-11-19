@@ -1,6 +1,6 @@
 package com.sintern.security.config;
 
-import com.sintern.security.CustomLogoutSuccessHandler;
+import com.sintern.security.utils.CustomLogoutSuccessHandler;
 import com.sintern.security.filters.AuthenticationFilter;
 import com.sintern.security.filters.AuthorizationFilter;
 import com.sintern.security.jwt.JwtUtil;

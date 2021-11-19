@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -17,9 +19,9 @@ public class SUserDetailsService implements UserDetailsService {
 
     StudentRepository studentRepository;
     CompanyRepository companyRepository;
-//    BCryptPasswordEncoder encoder;
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         if (studentRepository.existsByEmail(s)) {
             return studentRepository.findByEmail(s);
@@ -29,15 +31,4 @@ public class SUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("Invalid credentials!");
         }
     }
-
-//    public UserDetails findByEmailAndPassword(String email, String password) {
-//        if (studentRepository.existsByEmailAndPassword(email, encoder.encode(password))) {
-//            return studentRepository.findByEmail(email);
-//        } else if (companyRepository.existsByEmailAndPassword(email, encoder.encode(password))) {
-//            return companyRepository.findByEmail(email);
-//        }
-//        else {
-//            throw new InvalidException("Invalid credentials!");
-//        }
-//    }
 }

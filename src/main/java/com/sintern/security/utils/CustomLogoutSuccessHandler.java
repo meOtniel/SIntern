@@ -1,4 +1,4 @@
-package com.sintern.security;
+package com.sintern.security.utils;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
