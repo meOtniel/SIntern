@@ -1,9 +1,6 @@
 package com.sintern.api;
 
-import com.sintern.exception.ApiError;
-import com.sintern.exception.ExistentEmailException;
-import com.sintern.exception.NonExistentDomainException;
-import com.sintern.exception.SaveCvFailedException;
+import com.sintern.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
