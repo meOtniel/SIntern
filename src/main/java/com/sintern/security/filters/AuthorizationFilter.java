@@ -24,7 +24,6 @@ import java.util.Arrays;
 public class AuthorizationFilter extends OncePerRequestFilter {
 
     JwtUtil jwtUtil;
-
     SUserDetailsService service;
 
     public AuthorizationFilter(JwtUtil jwtUtil, SUserDetailsService userServiceDetails) {
@@ -57,8 +56,6 @@ public class AuthorizationFilter extends OncePerRequestFilter {
                 }
             }
         }
-
         chain.doFilter(request, response);
     }
-
 }

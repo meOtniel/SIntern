@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class OpenInternPositionServiceImpl implements OpenInternPositionService {
+
     private final OpenInternPositionRepository openInternPositionRepository;
 
     @Autowired

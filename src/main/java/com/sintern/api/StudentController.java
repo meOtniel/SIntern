@@ -20,6 +20,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/students")
 public class StudentController {
+
     private final StudentService studentService;
     private final FileService fileService;
 
@@ -45,7 +46,7 @@ public class StudentController {
     public ResponseEntity<byte[]> getFile(@PathVariable UUID studentId) {
         Optional<FileEntity> fileEntityOptional = fileService.getByStudentId(studentId);
 
-        if (!fileEntityOptional.isPresent()) {
+        if (fileEntityOptional.isEmpty()) {
             return ResponseEntity.notFound()
                     .build();
         }
@@ -56,5 +57,4 @@ public class StudentController {
                 .contentType(MediaType.valueOf(fileEntity.getContentType()))
                 .body(fileEntity.getData());
     }
-
 }

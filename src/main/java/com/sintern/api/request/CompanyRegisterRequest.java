@@ -8,9 +8,7 @@ public class CompanyRegisterRequest {
     private String address;
     private String domainType;
 
-    public CompanyRegisterRequest() {
-
-    }
+    public CompanyRegisterRequest() {}
 
     public CompanyRegisterRequest(String email, String password, String name, String address, String domainType) {
         this.email = email;
@@ -24,16 +22,8 @@ public class CompanyRegisterRequest {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getName() {
@@ -46,10 +36,6 @@ public class CompanyRegisterRequest {
 
     public String getAddress() {
         return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getDomainType() {

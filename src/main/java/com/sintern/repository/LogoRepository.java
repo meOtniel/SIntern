@@ -9,5 +9,6 @@ import java.util.UUID;
 
 @Repository
 public interface LogoRepository extends JpaRepository<CompanyLogo, UUID> {
+
     Optional<CompanyLogo> findLogoByCompanyId(UUID comapanyId);
 }

@@ -32,44 +32,4 @@ public class Application {
 
     String description;
     LocalDateTime dateOfSubmission;
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public OpenInternPosition getOpenInternPosition() {
-        return openInternPosition;
-    }
-
-    public void setOpenInternPosition(OpenInternPosition openInternPosition) {
-        this.openInternPosition = openInternPosition;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public LocalDateTime getDateOfSubmission() {
-        return dateOfSubmission;
-    }
-
-    public void setDateOfSubmission(LocalDateTime dateOfSubmission) {
-        this.dateOfSubmission = dateOfSubmission;
-    }
 }

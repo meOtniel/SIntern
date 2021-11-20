@@ -9,5 +9,6 @@ import java.util.UUID;
 
 @Repository
 public interface FileRepository extends JpaRepository<FileEntity, UUID> {
+
     Optional<FileEntity> findByStudentId(UUID studentId);
 }

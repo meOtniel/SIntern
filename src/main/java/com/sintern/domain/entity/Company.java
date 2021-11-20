@@ -21,6 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Company extends User implements UserDetails {
+
     @NotNull(message = "Name is required")
     @NotBlank(message = "Name is required")
     @Size(min = 2, max = 100, message = "Name should have between 2 and 100 characters")

@@ -40,17 +40,13 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     @Transactional
     public void addApplication(UUID studentID, UUID openInternPositionID, String description) {
-        Student student = studentRepository.findStudentById(studentID);
-        if(student == null)
-            throw new EntityNotFoundException("Student with given id does not exist!");
+        Student student = studentRepository.getById(studentID);
 
         Optional<FileEntity> fileEntity = fileRepository.findByStudentId(studentID);
         if(fileEntity.isEmpty())
             throw new CVNotFoundException("Student does not have attached a CV!");
 
-        OpenInternPosition openInternPosition = openInternPositionRepository.findOpenInternPositionById(openInternPositionID);
-        if(openInternPosition == null)
-            throw new EntityNotFoundException("Position with given id does not exist!");
+        OpenInternPosition openInternPosition = openInternPositionRepository.getById(openInternPositionID);
 
         Application applicationFound = applicationRepository.findApplicationByStudentIdAndOpenInternPositionId(studentID, openInternPositionID);
         if(applicationFound != null){

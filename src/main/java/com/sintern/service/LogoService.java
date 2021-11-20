@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface LogoService {
+
     Optional<CompanyLogo> getLogoByCompanyId(UUID companyId);
 
     void save(MultipartFile file, UUID companyId);

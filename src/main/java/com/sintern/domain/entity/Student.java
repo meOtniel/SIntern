@@ -21,6 +21,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Student extends User implements UserDetails {
+
     @NotNull(message = "First Name is required")
     @NotBlank(message = "First Name is required")
     @Size(min = 2, max = 100, message = "First Name should have between 2 and 100 characters")

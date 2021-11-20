@@ -5,6 +5,7 @@ import com.sintern.domain.enums.DomainType;
 import java.util.UUID;
 
 public class OpenInternPositionDTO {
+
     private UUID id;
     private String name;
     private String department;
@@ -43,58 +44,6 @@ public class OpenInternPositionDTO {
         this.name = name;
     }
 
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getAvailablePositions() {
-        return availablePositions;
-    }
-
-    public void setAvailablePositions(int availablePositions) {
-        this.availablePositions = availablePositions;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public DomainType getCompanyDomain() {
-        return companyDomain;
-    }
-
-    public void setCompanyDomain(DomainType companyDomain) {
-        this.companyDomain = companyDomain;
-    }
-
-    public String getCompanyAddress() {
-        return companyAddress;
-    }
-
-    public void setCompanyAddress(String companyAddress) {
-        this.companyAddress = companyAddress;
-    }
-
-    public String getCompanyLogo() {
-        return companyLogo;
-    }
-
     public void setCompanyLogo(String companyLogo) {
         this.companyLogo = companyLogo;
     }
@@ -112,5 +61,4 @@ public class OpenInternPositionDTO {
                 ", companyAddress='" + companyAddress + '\'' +
                 '}';
     }
-
 }

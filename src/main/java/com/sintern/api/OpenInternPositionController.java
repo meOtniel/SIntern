@@ -22,6 +22,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/open-positions")
 public class OpenInternPositionController {
+
     private final OpenInternPositionService openInternPositionService;
     private final LogoService logoService;
 
@@ -62,7 +63,7 @@ public class OpenInternPositionController {
     public ResponseEntity<byte[]> getLogo(@PathVariable UUID openPositionId) {
         Company company = openInternPositionService.getOpenInternPositionById(openPositionId).getCompany();
         Optional<CompanyLogo> companyLogoOptional = logoService.getLogoByCompanyId(company.getId());
-        if (!companyLogoOptional.isPresent()) {
+        if (companyLogoOptional.isEmpty()) {
             return ResponseEntity.notFound()
                     .build();
         }
@@ -72,5 +73,4 @@ public class OpenInternPositionController {
                 .contentType(MediaType.valueOf(companyLogo.getContentType()))
                 .body(companyLogo.getData());
     }
-
 }

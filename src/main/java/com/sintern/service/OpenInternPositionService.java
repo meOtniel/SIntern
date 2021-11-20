@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface OpenInternPositionService {
+
     OpenInternPosition getOpenInternPositionById(UUID openInetrnPositionId);
 
     List<OpenInternPositionDTO> findOpenInternPositionDTOByCompanyAddress(String address);
