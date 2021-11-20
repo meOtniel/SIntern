@@ -1,6 +1,9 @@
 package com.sintern.api;
 
-import com.sintern.exception.*;
+import com.sintern.exception.ApiError;
+import com.sintern.exception.ExistentEmailException;
+import com.sintern.exception.NonExistentDomainException;
+import com.sintern.exception.SaveCvFailedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -41,6 +44,12 @@ public class SInternExceptionHandler {
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ApiError handleMaxSizeException(MaxUploadSizeExceededException exc) {
         return new ApiError(ZonedDateTime.now(), HttpStatus.BAD_REQUEST, "Unable to upload. File is too large!");
+    }
+
+    @ExceptionHandler(InvalidTokenException.class)
+    @ResponseStatus(value = HttpStatus.UNAUTHORIZED)
+    public ApiError handleInvalidTokenException(InvalidTokenException exc) {
+        return new ApiError(ZonedDateTime.now(), HttpStatus.UNAUTHORIZED, exc.getMessage());
     }
 
     @ExceptionHandler(EntityNotFoundException.class)
