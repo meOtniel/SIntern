@@ -1,11 +1,10 @@
 package com.sintern.api;
 
+import com.sintern.api.request.AddApplicationRequest;
 import com.sintern.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.UUID;
 
 @CrossOrigin
 @RestController
@@ -19,11 +18,10 @@ public class ApplicationController {
         this.applicationService = applicationService;
     }
 
-    @PostMapping()
+    @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public void addApplication(@RequestParam("studentID") UUID studID,
-                               @RequestParam("openInternPositionID") UUID openInternPosID,
-                               @RequestParam("description") String descr){
-        applicationService.addApplication(studID, openInternPosID, descr);
+    public void addApplication(@RequestBody AddApplicationRequest addApplicationRequest) {
+        applicationService.addApplication(addApplicationRequest.getStudentID(),
+                addApplicationRequest.getOpenInternPositionID(), addApplicationRequest.getDescription());
     }
 }
