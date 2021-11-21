@@ -6,6 +6,9 @@ import com.sintern.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
 public class StudentServiceImpl implements StudentService {
 
@@ -28,5 +31,9 @@ public class StudentServiceImpl implements StudentService {
             student.setPassword(encodedPassword);
             studentRepository.save(student);
         }
+    }
+
+    public Optional<Student> findById(UUID uuid) {
+        return studentRepository.findById(uuid);
     }
 }
