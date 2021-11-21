@@ -6,18 +6,18 @@ public class CompanyRegisterRequest {
     private String password;
     private String name;
     private String address;
-    private String domainType;
+    private String domain;
 
     public CompanyRegisterRequest() {
 
     }
 
-    public CompanyRegisterRequest(String email, String password, String name, String address, String domainType) {
+    public CompanyRegisterRequest(String email, String password, String name, String address, String domain) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.address = address;
-        this.domainType = domainType;
+        this.domain = domain;
     }
 
     public String getEmail() {
@@ -52,11 +52,11 @@ public class CompanyRegisterRequest {
         this.address = address;
     }
 
-    public String getDomainType() {
-        return domainType;
+    public String getDomain() {
+        return domain;
     }
 
-    public void setDomainType(String domainType) {
-        this.domainType = domainType;
+    public void setDomain(String domain) {
+        this.domain = domain;
     }
 }
