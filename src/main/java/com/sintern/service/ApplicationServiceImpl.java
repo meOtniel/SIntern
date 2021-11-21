@@ -41,20 +41,17 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Transactional
     public void addApplication(UUID studentID, UUID openInternPositionID, String description) {
         Student student = studentRepository.getById(studentID);
-
         Optional<FileEntity> fileEntity = fileRepository.findByStudentId(studentID);
-        if(fileEntity.isEmpty())
+        if(fileEntity.isEmpty()) {
             throw new CVNotFoundException("Student does not have attached a CV!");
-
+        }
         OpenInternPosition openInternPosition = openInternPositionRepository.getById(openInternPositionID);
-
         Application applicationFound = applicationRepository.findApplicationByStudentIdAndOpenInternPositionId(studentID, openInternPositionID);
         if(applicationFound != null){
             applicationFound.setStudent(student);
             applicationFound.setOpenInternPosition(openInternPosition);
             applicationFound.setDateOfSubmission(LocalDateTime.now());
             applicationFound.setDescription(description);
-
             applicationRepository.save(applicationFound);
         }
         else{
@@ -63,7 +60,6 @@ public class ApplicationServiceImpl implements ApplicationService {
         application.setOpenInternPosition(openInternPosition);
         application.setDateOfSubmission(LocalDateTime.now());
         application.setDescription(description);
-
         applicationRepository.save(application);
         }
     }

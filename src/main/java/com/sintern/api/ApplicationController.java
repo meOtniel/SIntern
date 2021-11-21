@@ -19,7 +19,7 @@ public class ApplicationController {
         this.applicationService = applicationService;
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     @ResponseStatus(HttpStatus.OK)
     public void addApplication(@RequestParam("studentID") UUID studID,
                                @RequestParam("openInternPositionID") UUID openInternPosID,
