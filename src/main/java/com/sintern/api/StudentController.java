@@ -57,4 +57,10 @@ public class StudentController {
                 .contentType(MediaType.valueOf(fileEntity.getContentType()))
                 .body(fileEntity.getData());
     }
+
+    @GetMapping("/{studentID}")
+    public ResponseEntity<Optional<Student>> getStudent(@PathVariable UUID studentID){
+        return ResponseEntity.ok()
+                .body(studentService.findById(studentID));
+    }
 }

@@ -1,5 +1,6 @@
 package com.sintern.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.security.core.GrantedAuthority;
@@ -41,7 +42,7 @@ public class Student extends User implements UserDetails {
 
     @OneToOne(mappedBy = "student")
     EducationDetails educationDetails;
-  
+
     @OneToOne(mappedBy = "student")
     FileEntity cv;
 

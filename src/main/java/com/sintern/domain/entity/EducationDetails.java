@@ -1,6 +1,7 @@
 package com.sintern.domain.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sintern.domain.enums.FacultyType;
 import com.sintern.domain.enums.SpecializationType;
 import com.sintern.domain.enums.UniversityType;
@@ -19,6 +20,7 @@ import java.util.UUID;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class EducationDetails {
 
+    @JsonIgnore
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
@@ -30,6 +32,7 @@ public class EducationDetails {
     SpecializationType specialization;
     String yearOfStudy;
 
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "student_id", referencedColumnName = "id")
     Student student;

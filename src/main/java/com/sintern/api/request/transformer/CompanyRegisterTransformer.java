@@ -17,7 +17,7 @@ public class CompanyRegisterTransformer {
 
         Domain domain = new Domain();
         try {
-            domain.setDomainType(DomainType.valueOf(companyRegisterRequest.getDomainType()));
+            domain.setDomainType(DomainType.valueOf(companyRegisterRequest.getDomain()));
         } catch (IllegalArgumentException exception) {
             throw new NonExistentDomainException("There are no domains with this domain type!");
         }
