@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 @RequestMapping("/user")
 public class LoginController {
 
-    private AuthenticationUtils authenticationUtils;
+    private final AuthenticationUtils authenticationUtils;
 
     @Autowired
     public LoginController(AuthenticationUtils authenticationUtils) {

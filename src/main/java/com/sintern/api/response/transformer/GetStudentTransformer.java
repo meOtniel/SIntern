@@ -5,13 +5,13 @@ import com.sintern.domain.entity.Student;
 
 public class GetStudentTransformer {
 
-    public static GetStudentResponse transform(Student companyRegisterRequest) {
+    public static GetStudentResponse transform(Student student) {
         GetStudentResponse getStudentResponse = new GetStudentResponse();
-        getStudentResponse.setFirstName(companyRegisterRequest.getFirstName());
-        getStudentResponse.setLastName(companyRegisterRequest.getLastName());
-        getStudentResponse.setDateOfBirth(companyRegisterRequest.getDateOfBirth());
-        getStudentResponse.setPhoneNumber(companyRegisterRequest.getPhoneNumber());
-        getStudentResponse.setEducationDetails(companyRegisterRequest.getEducationDetails());
+        getStudentResponse.setFirstName(student.getFirstName());
+        getStudentResponse.setLastName(student.getLastName());
+        getStudentResponse.setDateOfBirth(student.getDateOfBirth());
+        getStudentResponse.setPhoneNumber(student.getPhoneNumber());
+        getStudentResponse.setEducationDetails(student.getEducationDetails());
         return getStudentResponse;
     }
 }

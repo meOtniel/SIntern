@@ -2,6 +2,7 @@ package com.sintern.service;
 
 import com.sintern.domain.entity.Company;
 import com.sintern.domain.entity.Domain;
+import com.sintern.exception.EntityNotFoundException;
 import com.sintern.exception.ExistentEmailException;
 import com.sintern.exception.NonExistentDomainException;
 import com.sintern.repository.CompanyRepository;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -43,7 +43,7 @@ public class CompanyServiceImpl implements CompanyService {
         }
     }
 
-    public Optional<Company> findByID(UUID uuid) {
-        return companyRepository.findById(uuid);
+    public Company findByID(UUID uuid) {
+        return companyRepository.findById(uuid).orElseThrow(() -> new EntityNotFoundException("The company doesn't exist"));
     }
 }
