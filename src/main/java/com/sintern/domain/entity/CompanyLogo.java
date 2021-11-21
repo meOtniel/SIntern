@@ -36,5 +36,4 @@ public class CompanyLogo {
     @OneToOne
     @JoinColumn(name = "company_id", referencedColumnName = "id")
     Company company;
-
 }

@@ -47,5 +47,4 @@ public class DomainController {
     public void uploadImage(@RequestParam("id") UUID domainId, @RequestParam("image") MultipartFile image) {
         domainImageService.save(image, domainId);
     }
-
 }

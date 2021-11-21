@@ -8,6 +8,4 @@ import java.util.List;
 import java.util.UUID;
 
 public interface EducationDetailsRepository extends JpaRepository<EducationDetails, UUID> {
-
-    List<EducationDetails> findEducationDetailsByUniversity(UniversityType universityType);
 }

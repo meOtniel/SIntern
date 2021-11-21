@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface FileService {
+
     void save(MultipartFile file, UUID studentId);
 
     Optional<FileEntity> getByStudentId(UUID studentId);

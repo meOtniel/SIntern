@@ -32,5 +32,4 @@ public class FileEntity {
     @OneToOne
     @JoinColumn(name = "student_id", referencedColumnName = "id")
     Student student;
-
 }

@@ -24,15 +24,12 @@ import java.util.ArrayList;
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     AuthenticationManager authenticationManager;
-
     JwtUtil jwtUtil;
-
 
     public AuthenticationFilter(AuthenticationManager authenticationManager, JwtUtil jwtUtil) {
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
     }
-
 
     @Override
     @SneakyThrows
@@ -74,5 +71,4 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         res.getOutputStream().write(json.getBytes());
         res.getOutputStream().flush();
     }
-
 }

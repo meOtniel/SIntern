@@ -32,6 +32,4 @@ public class OpenInternPosition {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     Company company;
-
-
 }

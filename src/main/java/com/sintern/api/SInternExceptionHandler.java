@@ -49,4 +49,15 @@ public class SInternExceptionHandler {
         return new ApiError(ZonedDateTime.now(), HttpStatus.UNAUTHORIZED, exc.getMessage());
     }
 
+    @ExceptionHandler(EntityNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public ApiError handleEntityNotFoundException(EntityNotFoundException exception) {
+        return new ApiError(ZonedDateTime.now(), HttpStatus.NOT_FOUND, exception.getMessage());
+    }
+
+    @ExceptionHandler(CVNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public ApiError handleCVNotFoundException(CVNotFoundException exception){
+        return new ApiError(ZonedDateTime.now(), HttpStatus.NOT_FOUND, exception.getMessage());
+    }
 }

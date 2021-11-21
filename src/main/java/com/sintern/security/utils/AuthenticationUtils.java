@@ -16,6 +16,7 @@ import lombok.experimental.FieldDefaults;
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class AuthenticationUtils {
+
     JwtUtil jwtUtil;
     StudentRepository studentRepository;
     CompanyRepository companyRepository;

@@ -10,6 +10,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/user")
 public class LoginController {
+
     AuthenticationUtils authenticationUtils;
 
     @GetMapping("/{token}")
@@ -18,5 +19,4 @@ public class LoginController {
         return ResponseEntity.ok()
                 .body(user);
     }
-
 }

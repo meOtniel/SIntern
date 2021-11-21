@@ -5,6 +5,7 @@ import com.sintern.domain.enums.DomainType;
 import java.util.UUID;
 
 public class DomainDTO {
+
     private UUID id;
     private String description;
     private DomainType domainType;
@@ -25,24 +26,12 @@ public class DomainDTO {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public DomainType getDomainType() {
         return domainType;
     }
 
     public void setDomainType(DomainType domainType) {
         this.domainType = domainType;
-    }
-
-    public String getDomainImage() {
-        return domainImage;
     }
 
     public void setDomainImage(String domainImage) {
