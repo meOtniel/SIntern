@@ -1,11 +1,11 @@
 package com.sintern.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
@@ -40,7 +40,7 @@ public class Student extends User implements UserDetails {
     @Pattern(regexp = "^(\\d{3}[- ]?){2}\\d{4}$", message = "Invalid phone number")
     String phoneNumber;
 
-    @OneToOne(mappedBy = "student")
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     EducationDetails educationDetails;
 
     @OneToOne(mappedBy = "student")

@@ -1,9 +1,9 @@
 package com.sintern.api;
 
+import com.sintern.api.request.RegisterStudentRequest;
+import com.sintern.api.request.transformer.RegisterStudentTransformer;
 import com.sintern.api.response.GetStudentResponse;
-import com.sintern.api.response.transformer.GetStudentTransformer;
 import com.sintern.domain.entity.FileEntity;
-import com.sintern.domain.entity.Student;
 import com.sintern.service.FileService;
 import com.sintern.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +36,8 @@ public class StudentController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.OK)
-    public void studentRegister(@Valid @RequestBody Student student) {
-        studentService.addStudent(student);
+    public void studentRegister(@Valid @RequestBody RegisterStudentRequest registerStudentRequest) {
+        studentService.addStudent(RegisterStudentTransformer.transform(registerStudentRequest));
     }
 
     @PostMapping("/upload-cv")
