@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
@@ -39,5 +41,9 @@ public class CompanyServiceImpl implements CompanyService {
             company.setPassword(encodedPassword);
             companyRepository.save(company);
         }
+    }
+
+    public Optional<Company> findByID(UUID uuid) {
+        return companyRepository.findById(uuid);
     }
 }

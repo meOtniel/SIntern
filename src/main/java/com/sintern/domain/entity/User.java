@@ -1,5 +1,6 @@
 package com.sintern.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.GenericGenerator;
@@ -30,6 +31,7 @@ public class User {
     @Size(min = 7, max = 74, message = "Email should have between 7 and 74 characters")
     String email;
 
+    @JsonIgnore
     @NotNull(message = "Password is required")
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@$!%*#?&])(?=\\S+$).{8,}$", message = "Password should contain minimum eight characters, at least one letter, one number and one special character.")
     String password;
