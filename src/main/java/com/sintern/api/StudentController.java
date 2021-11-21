@@ -57,4 +57,9 @@ public class StudentController {
                 .body(fileEntity.getData());
     }
 
+    @GetMapping("/{studentID}")
+    public ResponseEntity<Optional<Student>> getStudent(@PathVariable UUID studentID){
+        return ResponseEntity.ok()
+                .body(studentService.findById(studentID));
+    }
 }
