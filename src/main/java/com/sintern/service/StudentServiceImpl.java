@@ -1,12 +1,12 @@
 package com.sintern.service;
 
 import com.sintern.domain.entity.Student;
+import com.sintern.exception.EntityNotFoundException;
 import com.sintern.exception.ExistentEmailException;
 import com.sintern.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -33,7 +33,7 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
-    public Optional<Student> findById(UUID uuid) {
-        return studentRepository.findById(uuid);
+    public Student findById(UUID uuid) {
+        return studentRepository.findById(uuid).orElseThrow(() -> new EntityNotFoundException("The student doesn't exist!"));
     }
 }

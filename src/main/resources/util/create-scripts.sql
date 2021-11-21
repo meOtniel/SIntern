@@ -14,9 +14,9 @@ INSERT INTO public.domain (id, description, domain_type) VALUES ('489df7f2-3f16-
 INSERT INTO public.domain (id, description, domain_type) VALUES ('489df8d8-3f16-11ec-9bbc-0242ac130002', 'Military & Police Domain', 3);
 INSERT INTO public.domain (id, description, domain_type) VALUES ('489df9a0-3f16-11ec-9bbc-0242ac130002', 'Finance Domain', 4);
 
-INSERT INTO public.company (id, email, password, address, name, domain_id) VALUES ('eed76dd6-3ed7-11ec-9bbc-0242ac130002', 'sintern@company.com', 'sintern', 'Cluj-Napoca', 'SIntern', '489df338-3f16-11ec-9bbc-0242ac130002');
-INSERT INTO public.company (id, email, password, address, name, domain_id) VALUES ('eed76ab6-3ed7-11ec-9bbc-0242ac130002', 'medcare@company.com', 'medcare', 'Cluj-Napoca', 'Med Care', '489df554-3f16-11ec-9bbc-0242ac130002');
-INSERT INTO public.company (id, email, password, address, name, domain_id) VALUES ('4cbcf712-3ede-11ec-9bbc-0242ac130002', 'computersit@company.com', 'computersit', 'Bucharest', 'ComputersIT', '489df338-3f16-11ec-9bbc-0242ac130002');
+INSERT INTO public.company (id, email, password, address, name, domain_id) VALUES ('eed76dd6-3ed7-11ec-9bbc-0242ac130002', 'sintern@company.com', '$2a$10$rxoANnH1w3Zs/SX6dJRADuCu6AG27DocRPcGs9/JioMcpvAra1iM2', 'Cluj-Napoca', 'SIntern', '489df338-3f16-11ec-9bbc-0242ac130002');
+INSERT INTO public.company (id, email, password, address, name, domain_id) VALUES ('eed76ab6-3ed7-11ec-9bbc-0242ac130002', 'medcare@company.com', '$2a$10$RFwh4MkWOr7p/qobtj8yOeVuIcrtCGEw6jsgURdPYKpCn0tqUvAE6', 'Cluj-Napoca', 'Med Care', '489df554-3f16-11ec-9bbc-0242ac130002');
+INSERT INTO public.company (id, email, password, address, name, domain_id) VALUES ('4cbcf712-3ede-11ec-9bbc-0242ac130002', 'computersit@company.com', '$2a$10$GWEjETOxTn1brHPS0N4E0OlNYUFfOQgSy2PNBvLPfownzVX1.gPTa', 'Bucharest', 'ComputersIT', '489df338-3f16-11ec-9bbc-0242ac130002');
 
 INSERT INTO public.open_intern_position (id, available_positions, department, description, name, company_id) VALUES ('4cbcf0d2-3ede-11ec-9bbc-0242ac130002', 5, 'Java Backend', 'Java Backend Internship with Spring Framework, Hibernate ORM', 'Java Backend Internship', 'eed76dd6-3ed7-11ec-9bbc-0242ac130002');
 INSERT INTO public.open_intern_position (id, available_positions, department, description, name, company_id) VALUES ('4cbcecea-3ede-11ec-9bbc-0242ac130002', 2, 'Web Development', 'Web Development Internship, Angular Framework', 'Angular Web Dev. Internship', 'eed76dd6-3ed7-11ec-9bbc-0242ac130002');

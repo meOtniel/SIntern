@@ -1,5 +1,7 @@
 package com.sintern.api;
 
+import com.sintern.api.response.GetStudentResponse;
+import com.sintern.api.response.transformer.GetStudentTransformer;
 import com.sintern.domain.entity.FileEntity;
 import com.sintern.domain.entity.Student;
 import com.sintern.service.FileService;
@@ -15,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.util.Optional;
 import java.util.UUID;
+
+import static com.sintern.api.response.transformer.GetStudentTransformer.transform;
 
 @CrossOrigin
 @RestController
@@ -59,8 +63,8 @@ public class StudentController {
     }
 
     @GetMapping("/{studentID}")
-    public ResponseEntity<Optional<Student>> getStudent(@PathVariable UUID studentID){
-        return ResponseEntity.ok()
-                .body(studentService.findById(studentID));
+    @ResponseStatus(HttpStatus.OK)
+    public GetStudentResponse getStudent(@PathVariable UUID studentID){
+        return transform(studentService.findById(studentID));
     }
 }

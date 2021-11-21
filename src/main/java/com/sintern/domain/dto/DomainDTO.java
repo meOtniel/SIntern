@@ -38,6 +38,18 @@ public class DomainDTO {
         this.domainImage = domainImage;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDomainImage() {
+        return domainImage;
+    }
+
     @Override
     public String toString() {
         return "DomainDTO{" +
