@@ -31,7 +31,7 @@ public class Company extends User implements UserDetails {
     @Size(min = 2, max = 100, message = "Address should have between 2 and 100 characters")
     String address;
 
-    @JsonBackReference
+//    @JsonBackReference
     @ManyToOne
     @JoinColumn
     Domain domain;
