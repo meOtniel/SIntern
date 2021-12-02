@@ -1,5 +1,6 @@
 package com.sintern.repository;
 
+import com.sintern.domain.entity.Company;
 import com.sintern.domain.entity.OpenInternPosition;
 import com.sintern.domain.enums.DomainType;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,4 +17,6 @@ public interface OpenInternPositionRepository extends JpaRepository<OpenInternPo
     List<OpenInternPosition> findOpenInternPositionsByCompanyDomainDomainType(DomainType domainType);
 
     OpenInternPosition findOpenInternPositionById(UUID uuid);
+
+    List<OpenInternPosition> findOpenInternPositionsByCompany(Company companyID);
 }

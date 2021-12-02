@@ -1,6 +1,7 @@
 package com.sintern.service;
 
 import com.sintern.domain.dto.OpenInternPositionDTO;
+import com.sintern.domain.entity.Company;
 import com.sintern.domain.entity.Domain;
 import com.sintern.domain.entity.OpenInternPosition;
 import com.sintern.domain.enums.DomainType;
@@ -60,5 +61,17 @@ public class OpenInternPositionServiceImpl implements OpenInternPositionService 
         }
 
         return domains.stream().distinct().collect(Collectors.toList());
+    }
+
+    @Override
+    public List<OpenInternPositionDTO> findOpenInternPositionDTOByCompany(Company companyID) {
+        List<OpenInternPositionDTO> openInternPositionDTOList = new ArrayList<>();
+        for (OpenInternPosition openInterPosition : openInternPositionRepository.findOpenInternPositionsByCompany(companyID)) {
+            OpenInternPositionDTO openInternPositionDTO = new OpenInternPositionDTO(openInterPosition.getId(), openInterPosition.getName(),
+                    openInterPosition.getDepartment(), openInterPosition.getDescription(), openInterPosition.getAvailablePositions(),
+                    openInterPosition.getCompany().getName(), openInterPosition.getCompany().getDomain().getDomainType(), openInterPosition.getCompany().getAddress());
+            openInternPositionDTOList.add(openInternPositionDTO);
+        }
+        return openInternPositionDTOList;
     }
 }
