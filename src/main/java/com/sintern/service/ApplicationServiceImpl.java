@@ -5,7 +5,6 @@ import com.sintern.domain.entity.FileEntity;
 import com.sintern.domain.entity.OpenInternPosition;
 import com.sintern.domain.entity.Student;
 import com.sintern.exception.CVNotFoundException;
-import com.sintern.exception.EntityNotFoundException;
 import com.sintern.repository.ApplicationRepository;
 import com.sintern.repository.FileRepository;
 import com.sintern.repository.OpenInternPositionRepository;
@@ -15,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -42,25 +42,29 @@ public class ApplicationServiceImpl implements ApplicationService {
     public void addApplication(UUID studentID, UUID openInternPositionID, String description) {
         Student student = studentRepository.getById(studentID);
         Optional<FileEntity> fileEntity = fileRepository.findByStudentId(studentID);
-        if(fileEntity.isEmpty()) {
+        if (fileEntity.isEmpty()) {
             throw new CVNotFoundException("Student does not have attached a CV!");
         }
         OpenInternPosition openInternPosition = openInternPositionRepository.getById(openInternPositionID);
         Application applicationFound = applicationRepository.findApplicationByStudentIdAndOpenInternPositionId(studentID, openInternPositionID);
-        if(applicationFound != null){
+        if (applicationFound != null) {
             applicationFound.setStudent(student);
             applicationFound.setOpenInternPosition(openInternPosition);
             applicationFound.setDateOfSubmission(LocalDateTime.now());
             applicationFound.setDescription(description);
             applicationRepository.save(applicationFound);
+        } else {
+            Application application = new Application();
+            application.setStudent(student);
+            application.setOpenInternPosition(openInternPosition);
+            application.setDateOfSubmission(LocalDateTime.now());
+            application.setDescription(description);
+            applicationRepository.save(application);
         }
-        else{
-        Application application = new Application();
-        application.setStudent(student);
-        application.setOpenInternPosition(openInternPosition);
-        application.setDateOfSubmission(LocalDateTime.now());
-        application.setDescription(description);
-        applicationRepository.save(application);
-        }
+    }
+
+    @Override
+    public List<Application> findApplicationsByOpenInternPosition(OpenInternPosition openInternPositionID) {
+        return applicationRepository.findApplicationByOpenInternPosition(openInternPositionID);
     }
 }
