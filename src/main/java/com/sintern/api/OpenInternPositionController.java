@@ -5,6 +5,7 @@ import com.sintern.domain.entity.Company;
 import com.sintern.domain.entity.CompanyLogo;
 import com.sintern.domain.entity.Domain;
 import com.sintern.domain.enums.DomainType;
+import com.sintern.service.CompanyService;
 import com.sintern.service.LogoService;
 import com.sintern.service.OpenInternPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +26,13 @@ public class OpenInternPositionController {
 
     private final OpenInternPositionService openInternPositionService;
     private final LogoService logoService;
+    private final CompanyService companyService;
 
     @Autowired
-    public OpenInternPositionController(OpenInternPositionService openInternPositionService, LogoService logoService) {
+    public OpenInternPositionController(OpenInternPositionService openInternPositionService, LogoService logoService, CompanyService companyService) {
         this.openInternPositionService = openInternPositionService;
         this.logoService = logoService;
+        this.companyService = companyService;
     }
 
     @RequestMapping(value = "/address/{address}", method = RequestMethod.GET)
@@ -72,5 +75,12 @@ public class OpenInternPositionController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "image; filename=\"" + companyLogo.getName() + "\"")
                 .contentType(MediaType.valueOf(companyLogo.getContentType()))
                 .body(companyLogo.getData());
+    }
+
+    @RequestMapping(value = "/company/{companyID}", method = RequestMethod.GET)
+    public List<OpenInternPositionDTO> getInternPositionsByCompany(@PathVariable UUID companyID) {
+        Company company = companyService.findByID(companyID);
+        return openInternPositionService.findOpenInternPositionDTOByCompany(company);
+
     }
 }

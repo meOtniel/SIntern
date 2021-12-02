@@ -1,6 +1,7 @@
 package com.sintern.service;
 
 import com.sintern.domain.dto.OpenInternPositionDTO;
+import com.sintern.domain.entity.Company;
 import com.sintern.domain.entity.Domain;
 import com.sintern.domain.entity.OpenInternPosition;
 import com.sintern.domain.enums.DomainType;
@@ -17,4 +18,6 @@ public interface OpenInternPositionService {
     List<OpenInternPositionDTO> findOpenInternPositionDTOByCompanyDomain(DomainType domainType);
 
     List<Domain> getDomains();
+
+    List<OpenInternPositionDTO> findOpenInternPositionDTOByCompany(Company companyID);
 }
