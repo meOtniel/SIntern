@@ -1,21 +1,20 @@
 package com.sintern.domain.entity;
 
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class OpenInternPosition {
+public class Quiz {
 
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -23,15 +22,11 @@ public class OpenInternPosition {
     @Column(columnDefinition = "uuid")
     UUID id;
 
-    String name;
-    String department;
-    String description;
-    int availablePositions;
+    @OneToOne
+    @JoinColumn(name = "position_id", referencedColumnName = "id")
+    OpenInternPosition openInternPosition;
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
-    Company company;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "quiz", cascade = CascadeType.ALL)
+    List<QuizQuestion> quizQuestions;
 
-    @OneToOne(mappedBy = "openInternPosition")
-    Quiz quiz;
 }
