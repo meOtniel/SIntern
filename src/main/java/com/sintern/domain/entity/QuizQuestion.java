@@ -34,7 +34,7 @@ public class QuizQuestion {
 
     @NotNull String answer4;
 
-    @NotNull String correctAnswer;
+    @NotNull int correctAnswerIndex;
 
     @JsonBackReference
     @ManyToOne
@@ -42,6 +42,15 @@ public class QuizQuestion {
     Quiz quiz;
 
     public boolean isCorrect(String answer) {
-        return correctAnswer.equals(answer);
+        if (answer.equals(answer1) && correctAnswerIndex == 1) {
+            return true;
+        }
+        if (answer.equals(answer2) && correctAnswerIndex == 2) {
+            return true;
+        }
+        if (answer.equals(answer3) && correctAnswerIndex == 3) {
+            return true;
+        }
+        return answer.equals(answer4) && correctAnswerIndex == 4;
     }
 }

@@ -48,7 +48,7 @@ public class QuizRepositoryIntegrationTest {
         quizQuestion.setAnswer2("second answer");
         quizQuestion.setAnswer3("third answer");
         quizQuestion.setAnswer4("fourth answer");
-        quizQuestion.setCorrectAnswer("first answer");
+        quizQuestion.setCorrectAnswerIndex(1);
         quizQuestion.setQuiz(quiz);
 
         QuizQuestion quizQuestion2 = new QuizQuestion();
@@ -57,7 +57,7 @@ public class QuizRepositoryIntegrationTest {
         quizQuestion2.setAnswer2("second answer2");
         quizQuestion2.setAnswer3("third answer2");
         quizQuestion2.setAnswer4("fourth answer2");
-        quizQuestion2.setCorrectAnswer("first answer2");
+        quizQuestion2.setCorrectAnswerIndex(2);
         quizQuestion2.setQuiz(quiz);
 
         quizQuestionRepository.save(quizQuestion);
